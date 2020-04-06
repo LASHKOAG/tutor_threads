@@ -21,13 +21,15 @@ int main()
 {
     thread th(DoWork);
 
-    th.detach();
+    //th.detach();
+    //th.join();
 
     for(size_t i = 0; i < 10; ++i){
         cout << "ID of thread = " << this_thread::get_id() << "\tmain " << i << endl;
         this_thread::sleep_for(chrono::milliseconds(500));
     }
 
+    th.join();
 
     return 0;
 }
