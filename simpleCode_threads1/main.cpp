@@ -9,6 +9,7 @@ using namespace std;
 //потоки
 //thread
 
+
 int main()
 {
     cout << "START MAIN" << endl;
