@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <string>
 
 using namespace std;
 
@@ -8,11 +9,12 @@ using namespace std;
 //Многопоточное программирование
 //передача параметров в поток
 
-void DoWork(int a, int b){
+void DoWork(int a, int b, string msg){
     this_thread::sleep_for(chrono::milliseconds(3000));
         cout << "=============\t" << "DoWork STARTED\t=================" << endl;
     this_thread::sleep_for(chrono::milliseconds(5000));
         cout << "a+b = " << a+b << endl;
+        cout << "msg = " << msg << endl;
     this_thread::sleep_for(chrono::milliseconds(3000));
         cout << "=============\t" << "DoWork STOPPED\t=================" << endl;
 }
@@ -20,7 +22,7 @@ void DoWork(int a, int b){
 
 int main()
 {
-    thread th(DoWork,2,3);
+    thread th(DoWork,2,3, "hello ARM");
 
     //th.detach();
     //th.join();
