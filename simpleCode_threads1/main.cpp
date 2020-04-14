@@ -5,9 +5,9 @@
 
 using namespace std;
 
-//урок 2
+//урок 3
 //Многопоточное программирование
-//передача параметров в поток
+//получение результатов работы функции из потока
 
 void DoWork(int a, int b, string msg){
     this_thread::sleep_for(chrono::milliseconds(3000));
