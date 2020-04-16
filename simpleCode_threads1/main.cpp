@@ -5,9 +5,9 @@
 
 using namespace std;
 
-//урок 3
+//урок 4
 //Многопоточное программирование
-//получение результатов работы функции из потока
+//Лямбда выражения и возврат результата выполнения потока
 
 void DoWork(int &a){
     this_thread::sleep_for(chrono::milliseconds(3000));
@@ -24,11 +24,6 @@ int main()
     int q = 5;
 
     thread th(DoWork, std::ref(q));
-
-
-    //th.detach();
-    //th.join();
-    //DoWork(2,3);
 
 
     for(size_t i = 0; i<10; ++i){
