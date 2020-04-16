@@ -9,32 +9,35 @@ using namespace std;
 //Многопоточное программирование
 //получение результатов работы функции из потока
 
-void DoWork(int a, int b, string msg){
+void DoWork(int &a){
     this_thread::sleep_for(chrono::milliseconds(3000));
-        cout << "=============\t" << "DoWork STARTED\t=================" << endl;
+        cout << "ID of thread = " << this_thread::get_id() << " =============\tDoWork STARTED\t=================" << endl;
     this_thread::sleep_for(chrono::milliseconds(5000));
-        cout << "a+b = " << a+b << endl;
-        cout << "msg = " << msg << endl;
+    a *= 2;
     this_thread::sleep_for(chrono::milliseconds(3000));
-        cout << "=============\t" << "DoWork STOPPED\t=================" << endl;
+        cout << "ID of thread = " << this_thread::get_id() << " =============\tDoWork STOPPED\t=================" << endl;;
 }
 
 
 int main()
 {
-    thread th(DoWork,2,3, "hello ARM");
+    int q = 5;
+
+    thread th(DoWork, std::ref(q));
+
 
     //th.detach();
     //th.join();
     //DoWork(2,3);
 
 
-    for(size_t i = 0; true; ++i){
+    for(size_t i = 0; i<10; ++i){
         cout << "ID of thread = " << this_thread::get_id() << "\tmain works\t" << i << endl;
         this_thread::sleep_for(chrono::milliseconds(500));
     }
 
     th.join();
+        cout << "q = " << q << endl;
 
     return 0;
 }
